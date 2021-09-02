@@ -76,6 +76,10 @@ public class starter_template {
 	    	}
 	    	return str;
 	    }
+	    String[] stringarray() throws IOException {
+	    	String arr[]=br.readLine().split(" ");
+	    	return arr;
+	    }
     
 	} 
 	
