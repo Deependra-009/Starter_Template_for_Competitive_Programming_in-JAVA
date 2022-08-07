@@ -1,0 +1,47 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+class TreeNode{
+    public int val = 0;
+    public TreeNode left = null;
+    public TreeNode right = null;
+    TreeNode(int val){
+        this.val = val;
+    }
+    TreeNode(int val, TreeNode left, TreeNode right){
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
+public class Solution {
+    private static TreeNode getRoot(String[] treeFragments){
+        int len = treeFragments.length;
+        
+        TreeNode[] treeList = new TreeNode[len];
+        Arrays.fill(treeList,null);
+        for(int i=0;i<len;i++)
+            if(!treeFragments[i].equals("null"))
+                {   
+                    treeList[i] = new TreeNode(Integer.parseInt(treeFragments[i]));
+                    }
+        for(int i=0;i<len;i++){
+            if(treeList[i]==null)continue;
+            TreeNode left = null,right=null;
+            if(i*2+1<len)left = treeList[i*2+1];
+            if(i*2+2<len)right = treeList[i*2+2];
+            treeList[i].left = left;
+            treeList[i].right = right;
+        }
+        return treeList[0];
+    }
+ 
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        
+        
+    }
+}
+   
