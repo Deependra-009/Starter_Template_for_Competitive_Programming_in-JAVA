@@ -1,5 +1,6 @@
 import java.util.*;
 import java.io.*;
+import java.math.BigInteger;
 
 public class Main {
 
@@ -8,29 +9,23 @@ public class Main {
 
 	/* ------------------- Solve Area ------------------------------- */
 	private static void solve() {
-		
+
 		try {
+
+			/***********************************************/
 			
 			
 			
-		}catch(Exception e) {
 			
+			
+			/***********************************************/
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
-		
-	}
-
-	/* ------------------- Main Method ------------------------------- */
-
-	public static void main(String[] args) throws IOException {
-
- 		file = new File("/home/deependra/Code/Eclipse/JavaPractise/src/temp.txt");
- 		br = new BufferedReader(new FileReader(file));
-
-//		br=new BufferedReader(new InputStreamReader(System.in));
-
-		solve();
 
 	}
+	
 
 	/* ------------------- GCD ------------------------------- */
 
@@ -82,6 +77,95 @@ public class Main {
 			sort(arr, low, pi - 1);
 			sort(arr, pi + 1, high);
 		}
+	}
+
+	/* --------------- sieveOfEratosthenes ----------------------------- */
+
+	static ArrayList<Integer> sieveOfEratosthenes(int n) {
+		ArrayList<Integer> ans = new ArrayList<>();
+		boolean visit[] = new boolean[n + 1];
+		Arrays.fill(visit, true);
+		for (int i = 2; i * i <= n; i++) {
+
+			if (visit[i] == true) {
+				for (int j = i * i; j <= n; j += i) {
+					visit[j] = false;
+				}
+			}
+		}
+		for (int i = 2; i <= n; i++) {
+			if (visit[i])
+				ans.add(i);
+		}
+		return ans;
+	}
+
+	/* --------------- Merge Sort ----------------------------- */
+
+	@SuppressWarnings("unused")
+	private static void mergesort(int nums[], int low, int high) {
+
+		if (low < high) {
+			int mid = (low + high) / 2;
+			mergesort(nums, low, mid);
+			mergesort(nums, mid + 1, high);
+			merge(nums, low, mid, high);
+		}
+	}
+
+	private static void merge(int nums[], int low, int mid, int high) {
+
+		int l1 = mid - low + 1;
+		int l2 = high - mid;
+
+		int a1[] = new int[l1];
+		int a2[] = new int[l2];
+
+		for (int i = 0; i < l1; i++) {
+			a1[i] = nums[i + low];
+		}
+
+		for (int i = 0; i < l2; i++) {
+			a2[i] = nums[mid + i + 1];
+		}
+
+		int i = 0;
+		int j = 0;
+		int k = low;
+
+		while (i < l1 && j < l2) {
+			if (a1[i] <= a2[j]) {
+				nums[k++] = a1[i++];
+			} else {
+				nums[k++] = a2[j++];
+			}
+		}
+		while (i < l1) {
+			nums[k++] = a1[i++];
+		}
+		while (j < l2) {
+			nums[k++] = a2[j++];
+		}
+	}
+	
+	/* ------------------- Ceil Fuction ------------------------------- */
+	
+	@SuppressWarnings("unused")
+	private static long findCeilValue(long a,long b) {
+		return (a+b-1)/b;
+	}
+
+	/* ------------------- Main Method ------------------------------- */
+
+	public static void main(String[] args) throws IOException {
+
+		file = new File("/home/deependra/Code/Eclipse/JavaPractise/src/temp.txt");
+		br = new BufferedReader(new FileReader(file));
+
+//		br=new BufferedReader(new InputStreamReader(System.in));
+
+		solve();
+
 	}
 
 }
