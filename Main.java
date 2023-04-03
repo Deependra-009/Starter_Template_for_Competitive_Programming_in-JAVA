@@ -1,6 +1,5 @@
 import java.util.*;
 import java.io.*;
-import java.math.BigInteger;
 
 public class Main {
 
@@ -13,11 +12,9 @@ public class Main {
 		try {
 
 			/***********************************************/
+
 			
-			
-			
-			
-			
+
 			/***********************************************/
 
 		} catch (Exception e) {
@@ -26,6 +23,24 @@ public class Main {
 
 	}
 	
+	/* ------------------- Upper Bound ------------------------------- */ 
+	
+	public static int upper_bount(int arr[], int target) {
+	      int ans = -1;
+	      int low = 0, high = arr.length - 1;
+	      while(high >= low) {
+	        int mid = low + (high - low) / 2;
+	        if(arr[mid] == target) return mid;
+	        else if(arr[mid] < target) { 
+	          low = mid + 1;
+	        }
+	        else {
+	          ans = mid;
+	          high = mid - 1;
+	        }
+	      }
+	      return ans;
+	    }
 
 	/* ------------------- GCD ------------------------------- */
 
@@ -147,14 +162,81 @@ public class Main {
 			nums[k++] = a2[j++];
 		}
 	}
-	
+
 	/* ------------------- Ceil Fuction ------------------------------- */
-	
+
 	@SuppressWarnings("unused")
-	private static long findCeilValue(long a,long b) {
-		return (a+b-1)/b;
+	private static long findCeilValue(long a, long b) {
+		return (a + b - 1) / b;
 	}
 
+	/* ------------------- Primes ------------------------------- */
+	
+	@SuppressWarnings("unused")
+	private static List<Integer> primes(int n) {
+		 
+        boolean[] primeArr = new boolean[n + 5];
+        Arrays.fill(primeArr, true);
+        for (int i = 2; (i * i) <= n; i++) {
+            if (primeArr[i]) {
+                for (int j = i * i; j <= n; j += i) {
+                    primeArr[j] = false;
+                }
+            }
+        }
+ 
+        List<Integer> primeList = new ArrayList<>();
+        for (int i = 2; i <= n; i++) {
+            if (primeArr[i])
+                primeList.add(i);
+        }
+ 
+        return primeList;
+    }
+	
+	/* ------------------- No of Set Bit ------------------------------- */
+	
+	@SuppressWarnings("unused")
+	private static int noOfSetBits(long x) {
+        int cnt = 0;
+        while (x != 0) {
+            x = x & (x - 1);
+            cnt++;
+        }
+        return cnt;
+    }
+	
+	/* ------------------- Sum of Digit ------------------------------- */
+	
+    @SuppressWarnings("unused")
+	private static int sumOfDigits(long num) {
+        int cnt = 0;
+        while (num > 0) {
+            cnt += (num % 10);
+            num /= 10;
+        }
+        return cnt;
+    }
+    /* ------------------- No of Digit ------------------------------- */
+ 
+    @SuppressWarnings("unused")
+	private static int noOfDigits(long num) {
+        int cnt = 0;
+        while (num > 0) {
+            cnt++;
+            num /= 10;
+        }
+        return cnt;
+    }
+    
+    /* ------------------- isPerfectSquare ------------------------------- */
+ 
+    @SuppressWarnings("unused")
+	private static boolean isPerfectSquare(long num) {
+        long sqrt = (long) Math.sqrt(num);
+        return ((sqrt * sqrt) == num);
+    }
+	
 	/* ------------------- Main Method ------------------------------- */
 
 	public static void main(String[] args) throws IOException {
