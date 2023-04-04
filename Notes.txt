@@ -1,0 +1,8 @@
+// ------>>
+If you want to find a number at a particular position of a sequence which not including that number which included d digit
+eg: d=4;
+1 2 3 5 6 7 8 9 10 11 12 13 15 .... 
+at position 22 comes 25th number 
+
+Link-> https://codeforces.com/contest/1811/problem/E
+
