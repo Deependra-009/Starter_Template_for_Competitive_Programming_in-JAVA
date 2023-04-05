@@ -6,3 +6,9 @@ at position 22 comes 25th number
 
 Link-> https://codeforces.com/contest/1811/problem/E
 
+
+// -------------->
+If you want to divide an array into segment which contains contiguous element and all sum of of all element in segments is equal
+
+Link -> https://codeforces.com/problemset/problem/1741/C
+
