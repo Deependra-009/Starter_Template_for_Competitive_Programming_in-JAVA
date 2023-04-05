@@ -12,3 +12,11 @@ If you want to divide an array into segment which contains contiguous element an
 
 Link -> https://codeforces.com/problemset/problem/1741/C
 
+//------------------->
+Note: Total number of ways to distribute five different balls among 3 persons are 35
+.
+Number of ways to distribute five balls to 3 people at least one get no ball are 3C1×(25−1)
+ ways.
+Then total number of ways to distribute balls such that each person get at least one ball is
+35−3C1×(25−1)=243−3∗31
+
