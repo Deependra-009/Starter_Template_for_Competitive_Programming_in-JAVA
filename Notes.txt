@@ -76,6 +76,8 @@ for(int i:arr) {
 					if(a==i) ans--;
 }				
 System.out.println(ans/2);
+//----------------------->
+https://codeforces.com/contest/1581/submission/206764040
 
 
         
