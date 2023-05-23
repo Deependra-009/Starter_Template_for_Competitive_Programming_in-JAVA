@@ -1,11 +1,10 @@
 import java.util.*;
 import java.io.*;
 
-public class Main2 {
-	static File file = null;
+public class Main {
+
 	static final long mod = 1000000007;
-	static Scanner sc = null;
-	static BufferedReader br = null;
+	static FastReader fs = null;
 
 	static class Pair implements Comparable<Pair> {
 		int value;
@@ -14,13 +13,10 @@ public class Main2 {
 		public Pair(int v, int i) {
 			this.value = v;
 			this.index = i;
-
 		}
 
 		public int compareTo(Pair p) {
-			if (p.value == this.value)
-				return (p.index - this.index);
-			return p.value - this.value;
+			return this.value - p.value;
 		}
 	}
 
@@ -31,37 +27,13 @@ public class Main2 {
 
 			/***********************************************/
 
-			/***********************************************/
-		} catch (
+			
 
-		Exception e) {
+			/***********************************************/
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 
-	}
-	/* ------------------- create Integer Array ------------------------------- */
-	static Integer[] createIntegerArray() throws IOException {
-		String temp[] = br.readLine().split(" ");
-		Integer[] arr = new Integer[temp.length];
-		for (int i = 0; i < temp.length; i++)
-			arr[i] = Integer.parseInt(temp[i]);
-		return arr;
-	}
-	/* ------------------- create Long Array ------------------------------- */
-	static Long[] creatLongArray() throws IOException {
-		String temp[] = br.readLine().split(" ");
-		Long[] arr = new Long[temp.length];
-		for (int i = 0; i < temp.length; i++)
-			arr[i] = Long.parseLong(temp[i]);
-		return arr;
-	}
-	/* ------------------- create Integer Matrix ------------------------------- */
-	static Long[][] createLongMatrix(int n, int m) throws IOException {
-		String temp[] = br.readLine().split(" ");
-		Long[][] arr = new Long[n][m];
-		for (int i = 0; i < temp.length; i++)
-			arr[i] = creatLongArray();
-		return arr;
 	}
 	/* ------------------- Check Palindrome ------------------------------- */
 	static boolean checkPalindrome(String s, int l, int r) {
@@ -146,17 +118,67 @@ public class Main2 {
 		long sqrt = (long) Math.sqrt(num);
 		return ((sqrt * sqrt) == num);
 	}
-	/* ------------------- Main Method ------------------------------- */
-	public static void main(String[] args) throws IOException {
-		file = new File("/home/deependra/Code/Eclipse/JavaPractise/src/temp.txt");
-		
-//  		sc=new Scanner(new FileReader(file));
-//  		sc=new Scanner(System.in);
+	/* ------------------- FastReader ------------------------------- */
 
-		br = new BufferedReader(new InputStreamReader(System.in));
+	static class FastReader {
+		BufferedReader br;
+		StringTokenizer st;
+		File file = null;
 
-//  		br=new BufferedReader(new FileReader(file));
+		String next() {
+			while (st == null || !st.hasMoreElements()) {
+				try {
+					st = new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			return st.nextToken();
+		}
 
-		solve();
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+
+		long nextLong() {
+			return Long.parseLong(next());
+		}
+
+		double nextDouble() {
+			return Double.parseDouble(next());
+		}
+
+		Integer[] createIntArray(int n) {
+			Integer arr[] = new Integer[n];
+			for (int i = 0; i < n; i++)
+				arr[i] = fs.nextInt();
+			return arr;
+		}
+		Long[] createLongArray(int n) {
+			Long arr[] = new Long[n];
+			for (int i = 0; i < n; i++)
+				arr[i] = fs.nextLong();
+			return arr;
+		}
+		String nextLine() {
+			String str = "";
+			try {
+				if (st.hasMoreTokens()) {
+					str = st.nextToken("\n");
+				} else {
+					str = br.readLine();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return str;
+		}
+		public FastReader() throws IOException {
+			file = new File("/home/deependra/Code/Eclipse/JavaPractise/src/temp.txt");
+			br = new BufferedReader(new FileReader(file));
+
+//			br=new BufferedReader(new InputStreamReader(System.in));
+		}
 	}
+
 }
